@@ -4,8 +4,8 @@ import ProTip from "~/components/ProTip";
 import { Link as RemixLink } from "@remix-run/react";
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Remix + MUI + Vite Admin" },
+    { name: "description", content: "Welcome to Remix Admin!" },
   ];
 };
 
@@ -14,7 +14,7 @@ export default function Index() {
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" sx={{ mb: 2 }} color="primary">
-          Remix + MUI + Vite Example
+          Remix + MUI + Vite Admin
         </Typography>
         <ProTip />
         <RemixLink to="/error">Test Error Boundary</RemixLink>

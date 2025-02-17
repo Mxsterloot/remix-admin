@@ -5,8 +5,52 @@ import { Link } from "@remix-run/react";
 const drawerWidth = 240;
 const collapsedWidth = 65;
 
-export default function Sidebar({ open, onClose, variant }: { open: boolean, onClose: () => void, variant: 'permanent' | 'temporary' }) {
- 
+const sidebarItems = [
+  {
+    label: 'Dashboard',
+    icon: DashboardIcon,
+    to: '/dashboard',
+  },
+  {
+    label: 'บริษัท',
+    icon: Person,
+    to: '/company',
+  },
+  {
+    label: 'สาขา',
+    icon: Person,
+    to: '/branch',
+  },
+  {
+    label: 'สัญญา',
+    icon: Person,
+    to: '/contract',
+  },
+  {
+    label: 'แผนก',
+    icon: Person,
+    to: '/department',
+  },
+  {
+    label: 'พนักงาน',
+    icon: Person,
+    to: '/employee',
+  },
+  {
+    label: 'การตั้งค่าระบบ',
+    icon: Settings,
+    to: '/settings',
+  },
+];
+
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+  variant: 'permanent' | 'temporary';
+}
+
+export default function Sidebar({ open, onClose, variant }: SidebarProps) {
+
   return (
     <Drawer
       variant={variant}
@@ -24,31 +68,21 @@ export default function Sidebar({ open, onClose, variant }: { open: boolean, onC
       }}
     >
       <Box sx={{ overflow: 'auto', mt: 8 }}>
-        <IconButton 
+        <IconButton
           onClick={onClose}
           sx={{ ml: open ? 1 : 0.5, mb: 1 }}
         >
           {open ? <ChevronLeft /> : <ChevronRight />}
         </IconButton>
         <List>
-          <ListItem button component={Link} to="/dashboard">
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            {open && <ListItemText primary="Dashboard" />}
-          </ListItem>
-          <ListItem button component={Link} to="/profile">
-            <ListItemIcon>
-              <Person />
-            </ListItemIcon>
-            {open && <ListItemText primary="Profile" />}
-          </ListItem>
-          <ListItem button component={Link} to="/settings">
-            <ListItemIcon>
-              <Settings />
-            </ListItemIcon>
-            {open && <ListItemText primary="Settings" />}
-          </ListItem>
+          {sidebarItems.map((item) => (
+            <ListItem key={item.label} button component={Link} to={item.to}>
+              <ListItemIcon>
+                <item.icon />
+              </ListItemIcon>
+              {open && <ListItemText primary={item.label} />}
+            </ListItem>
+          ))}
         </List>
       </Box>
     </Drawer>
