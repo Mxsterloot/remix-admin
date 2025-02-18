@@ -13,9 +13,13 @@ interface UpdateUserRequest {
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getUsers: builder.query<User[], void>({
+      query: () => 'users',
+      providesTags: ['User'],
+    }),
     getUser: builder.query<User, string>({
       query: (id) => `users/${id}`,
-      providesTags: (result, error, id) => [{ type: 'User', id }],
+      providesTags: (result, error, id) => [{ type: 'User', id: id }],
     }),
     updateUser: builder.mutation<User, { id: string; data: UpdateUserRequest }>({
       query: ({ id, data }) => ({
@@ -29,6 +33,7 @@ export const userApi = baseApi.injectEndpoints({
 });
 
 export const { 
+  useGetUsersQuery, 
   useGetUserQuery, 
   useUpdateUserMutation,
 } = userApi;

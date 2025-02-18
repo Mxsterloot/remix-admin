@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from "@mui/material";
 import DashboardLayout from "~/components/common/Layout";
-import SearchBox from "~/components/form/input/SearchBox";
+import SearchBox from "~/components/common/form/input/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "~/store";
 import { setCompanySearch } from "~/store/slices/companySlice";

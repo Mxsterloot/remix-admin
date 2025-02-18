@@ -5,12 +5,12 @@ import type { Middleware } from '@reduxjs/toolkit';
 export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ 
-    baseUrl: '/api',
+    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
     // Add default headers, credentials, etc
     credentials: 'include',
   }),
   endpoints: () => ({}),
-  tagTypes: ['User', 'Post'], // Add your cache tags here
+  tagTypes: ['User', 'Post','Company','Employee'], // Add your cache tags here
 });
 
 export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {

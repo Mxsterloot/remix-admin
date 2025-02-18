@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { companySelector, setCompanySearch } from "~/store/slices/companySlice";
 import DataTable from "~/components/table/DataTable";
 
-const moduleName = "สาขา";
-export default function Branch() {
+const moduleName = "แผนก";
+export default function Department() {
   
   const dispatch = useDispatch();
   const { companySearch } = useSelector(companySelector);
-  
+
   return (
     <DashboardLayout>
       <Typography variant="h4" component="h1" gutterBottom>

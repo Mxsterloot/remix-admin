@@ -29,7 +29,7 @@ function Copyright() {
     <Typography variant="body2" color="secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Wallop Chuchart
       </Link>{" "}
       {new Date().getFullYear()}.
     </Typography>

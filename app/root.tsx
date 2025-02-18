@@ -6,13 +6,13 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  useNavigate,
   useRouteError,
 } from "@remix-run/react";
 import theme from "./theme";
-import { Box, CssBaseline, Typography } from "@mui/material";
+import { Box, Button, CssBaseline, Typography } from "@mui/material";
 import { Provider } from "react-redux";
 import { store } from "./store";
-
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -42,14 +42,53 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  const navigate = useNavigate();
   const message = isRouteErrorResponse(error)
     ? error.data
     : (error as Error).message;
   return (
-    <Box sx={{ m: 4 }}>
-      <Typography variant="h4" component="h1" sx={{ mb: 2 }} color="red">
-        {message ?? "An error occurred"}
-      </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        p: 4
+      }}
+    >
+      <Box
+        sx={{
+          p: 4,
+          borderRadius: 2,
+          bgcolor: 'background.paper',
+          boxShadow: 3,
+          textAlign: 'center'
+        }}
+      >
+        <Typography 
+          variant="h4" 
+          component="h1"
+          sx={{ 
+            mb: 2,
+            color: 'error.main',
+            fontWeight: 'bold'
+          }}
+        >
+          {message ?? "An error occurred"}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mb: 2 }}
+        >
+          Sorry, something went wrong. Please try again later.
+        </Typography>
+        <Button variant="contained" color="error" onClick={() => navigate('/')}>
+          กลับหน้าหลัก
+        </Button>
+      </Box>
     </Box>
   );
 }

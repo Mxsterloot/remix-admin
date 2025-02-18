@@ -1,6 +1,5 @@
-import { IceSkating } from "@mui/icons-material";
+import { LogoDev } from "@mui/icons-material";
 import { IconButton, AppBar as MuiAppBar, Toolbar, Typography } from "@mui/material";
-
 export default function AppBar({ onMenuClick }: { onMenuClick: () => void }) {
   return (
     <MuiAppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -10,12 +9,12 @@ export default function AppBar({ onMenuClick }: { onMenuClick: () => void }) {
           aria-label="open drawer"
           edge="start"
           onClick={onMenuClick}
-          sx={{ mr: 2, display: { md: 'none' } }}
+          sx={{ mr: 2 }}
         >
-          <IceSkating />
+          <LogoDev />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Dashboard
+          HR System
         </Typography>
       </Toolbar>
     </MuiAppBar>

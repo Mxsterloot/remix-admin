@@ -1,5 +1,5 @@
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton } from "@mui/material";
-import { Dashboard as DashboardIcon, Person, Settings, ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { Dashboard as DashboardIcon, Person, Settings, ChevronLeft, ChevronRight, Business, LocationCity, BookOnline, Work } from "@mui/icons-material";
 import { Link } from "@remix-run/react";
 
 const drawerWidth = 240;
@@ -13,22 +13,22 @@ const sidebarItems = [
   },
   {
     label: 'บริษัท',
-    icon: Person,
+    icon: Business,
     to: '/company',
   },
   {
     label: 'สาขา',
-    icon: Person,
+    icon: LocationCity,
     to: '/branch',
   },
   {
     label: 'สัญญา',
-    icon: Person,
+    icon: BookOnline,
     to: '/contract',
   },
   {
     label: 'แผนก',
-    icon: Person,
+    icon: Work,
     to: '/department',
   },
   {

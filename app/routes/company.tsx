@@ -1,15 +1,15 @@
 import { Button, Grid, Typography } from "@mui/material";
 import DashboardLayout from "~/components/common/Layout";
-import SearchBox from "~/components/form/input/SearchBox";
+import SearchBox from "~/components/common/form/input/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "~/store";
-import { setCompanySearch } from "~/store/slices/companySlice";
+import { companySelector, setCompanySearch } from "~/store/slices/companySlice";
 import DataTable from "~/components/table/DataTable";
 
+const moduleName = "บริษัท";
 export default function Company() {
-  const moduleName = "บริษัท";
+  
   const dispatch = useDispatch();
-  const companySearch = useSelector((state: RootState) => state.company.companySearch);
+  const { companySearch } = useSelector(companySelector);
 
   return (
     <DashboardLayout>
